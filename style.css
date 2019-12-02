@@ -60,7 +60,7 @@ button {
   top: 70px;
 }
 
-.form {
+.form, .form-update {
   display: none;
   width: 600px;
   height: 480px;

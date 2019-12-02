@@ -44,11 +44,24 @@ const dataController = (() => {
       theData.push(newCard);
       return newCard
     }, 
+    // editCard: (ques, ans) => {
+    //   // let editCard, theData;
+    //   theData = data.allCards['cards'];
+
+    //   // if (theData.length > 0) {
+    //   //   ID = theData[theData.length-1].id + 1;
+    //   // } else {
+    //   //   ID = 0;
+    //   // }
+
+    //   //this is using bracket notation to access the object value, not accessing array
+    //   theData.push(editCard);
+    //   return editCard
+    // },
+    
     allData: () => {
       let theData = data.allCards['cards'];
-      let currentC = data.allCards['currentCard'];
-      
-      return {theData, currentC}
+      return {theData}
     }    
   }
 })();
@@ -75,8 +88,9 @@ const controller = ((dataCtrl, inputCtrl) => {
     document.getElementById("flashcard").addEventListener("click", switchCard);
     document.getElementById("next").addEventListener("click", next);
     document.getElementById("previous").addEventListener("click", previous);
-    document.getElementById("edit").addEventListener("click", edit);
-    document.getElementById("deleteCard").addEventListener("click", deleteCard);
+    // document.getElementById("edit").addEventListener("click", edit);
+    // document.getElementById("update").addEventListener("click", ctrlEditCard);
+    document.getElementById("delete").addEventListener("click", deleteCard);
     document.getElementById("new-flashcard").addEventListener("click", toggleForm);
     document.getElementById("create").addEventListener("click", ctrlAddCard);
 
@@ -139,23 +153,46 @@ const controller = ((dataCtrl, inputCtrl) => {
     switchCard();
   };
  
-   const switchCard = () => {
-    let cards, newElementQ, newElementA, cardQuestion, cardAnswer;
-    
+  const switchCard = () => {
+  let cards, newElementQ, newElementA, cardQuestion, cardAnswer;
+  
+  allData = dataCtrl.allData().theData;
+  cards = allData;
+
+  cardQuestion = cards[currentCard].question;
+  newElementQ = document.getElementById('content-q');
+  newElementQ.innerHTML = cardQuestion;
+  $('#content-q').toggle();
+
+  cardAnswer = cards[currentCard].answer;
+  newElementA = document.getElementById('content-a');
+  newElementA.innerHTML = cardAnswer;
+  $('#content-a').toggle();
+
+  };
+
+  // const edit = () => {
+  //   $("#content-q").hide();
+  //   $("#content-a").hide();
+  //   $(".form-update").toggle();
+  // }
+  const deleteCard = () => {
+    let ids, index;
+
     allData = dataCtrl.allData().theData;
-    cards = allData;
+    card = allData
+    id = allData[currentCard].id
+    
+    ids = allData.map(function(current) {
+        return current.id;
+    });
 
-    cardQuestion = cards[currentCard].question;
-    newElementQ = document.getElementById('content-q');
-    newElementQ.innerHTML = cardQuestion;
-    $('#content-q').toggle();
+    index = ids.indexOf(id);
 
-    cardAnswer = cards[currentCard].answer;
-    newElementA = document.getElementById('content-a');
-    newElementA.innerHTML = cardAnswer;
-    $('#content-a').toggle();
-
-    };
+    if (index !== -1) {
+        card.splice(index, 1);
+    } 
+  }
 
   const toggleForm = () => {
     $("#content-q").hide();
@@ -173,6 +210,16 @@ const controller = ((dataCtrl, inputCtrl) => {
     dataCtrl.addCard(input.question, input.answer);
     
   };
+
+  // const ctrlEditCard = () => {
+  //   let input; 
+
+  //   input = inputCtrl.getInput();
+    
+  //   $('.form').toggle();
+  //   $("#content-q").show();
+  //   dataCtrl.editCard(input.question, input.answer);
+  // }
 
   return {
     init: () => {
