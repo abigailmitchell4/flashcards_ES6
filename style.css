@@ -23,7 +23,7 @@ button {
 }
 
 #flashcard {
-  display: block;
+  display: flex;
   width: 500px;
   height: 400px;
   border: 1px solid #ccc;
@@ -40,41 +40,52 @@ button {
 
 #content-q {
   display: block;
+  font-size: 40px;
+  align-self: center;
+  position: relative;
 }
 
 #content-a {
   display: none;
+  font-size: 35px;
+  align-self: center;
+  position: relative;
+  width: inherit;
 }
 #question-info {
   display: block;
   font-size: 40px;
   align-self: center;
   position: relative;
-  top: 70px;
+ 
 }
 #answer-info {
   font-size: 35px;
-  display: block;
+  display: none;
   align-self: center;
   position: relative;
-  top: 70px;
+ 
 }
 
 .form, .form-update {
   display: none;
-  width: 600px;
+  width: 670px;
   height: 480px;
-  background-color: pink;
+  background-color: #dde4ff;
   z-index: 99;
   position: relative;
+  bottom: 500px;
   margin: 0 auto;
-  transform: translate(-33.5%, 0);
   padding: 2rem;
   border-radius: 10%;
+
+  animation-name: moveInBottom; /*refers to @keyframes name*/
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in;
 }
 
-/*.form-container {
-  display: flex;
+.form-container {
+  /* display: flex; */
   align-content: center;
   flex-wrap: wrap;
 }
@@ -82,11 +93,11 @@ button {
 .form-container-content {
   display: block;
   padding: 2rem;
-}*/
+}
 
 input {
   font-size: 1.5rem;
-  background-color: pink;
+  background-color: #dde4ff;
 }
 label {
   color: #2c46ff;
@@ -105,6 +116,11 @@ label {
   border-top-width: 0px;
   outline-style: none;
 }
+
+.form-input-label {
+  font-size: 20px;
+}
+
 #edit {
   display: block;
   position: absolute;
@@ -143,15 +159,15 @@ img {
 }
 
 #create {
-  background-color: #fff;
+  background-color: #ff8a0d;
   padding: 1rem;
-  color: #2c46ff;
+  color: #fff;
   border-radius: 10%;
   margin-bottom: 1rem;
 }
 
 #exit {
-  background-color: pink;
+  background-color: #dde4ff;
   padding: 1rem;
   color: red;
   border-radius: 10%;
@@ -160,5 +176,19 @@ img {
 #edit, #delete {
   background-color: #2c46ff;
   font-size: 1.2rem;
-  color: pink;
+  color: #fff;
 } 
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translatey(100px);
+    }
+    80%{
+        transform: translatey(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

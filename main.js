@@ -88,6 +88,10 @@ const controller = ((dataCtrl, inputCtrl) => {
     document.getElementById("flashcard").addEventListener("click", switchCard);
     document.getElementById("next").addEventListener("click", next);
     document.getElementById("previous").addEventListener("click", previous);
+    document.getElementById("exit").addEventListener("click", () => {
+      $('.form').toggle();
+      $("#content-q").show();
+    });
     // document.getElementById("edit").addEventListener("click", edit);
     // document.getElementById("update").addEventListener("click", ctrlEditCard);
     document.getElementById("delete").addEventListener("click", deleteCard);
