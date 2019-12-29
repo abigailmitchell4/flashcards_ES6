@@ -44,7 +44,7 @@ svg {
   height: 50px;
   display: inline-block;
   position: absolute;
-  left: 36rem;
+  left: 36.5rem;
   bottom: 11rem;
 }
 
@@ -117,18 +117,19 @@ polyline {
 .form {
   display: none;
   width: 670px;
-  height: 480px;
-  background-color: #dde4ff;
+  height: 520px;
+  background-color: #e8ecff;
   z-index: 99;
   position: relative;
   bottom: 500px;
   margin: 0 auto;
   padding: 2rem;
   border-radius: 10%;
+  box-shadow: 3px 3px 32px rgba(0,0,0,.25);
 
   animation-name: moveInBottom; /*refers to @keyframes name*/
   animation-duration: 1.2s;
-  animation-timing-function: ease-in;
+  animation-timing-function: ease-in-out;
 }
 
 .form-container {
@@ -144,7 +145,7 @@ polyline {
 
 input {
   font-size: 1.5rem;
-  background-color: #dde4ff;
+  background-color: transparent;
 }
 label {
   color: #2c46ff;
@@ -165,7 +166,7 @@ label {
 }
 
 .form-input-label {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .btns {
@@ -183,23 +184,6 @@ label {
   color: #d65531;
 }
 
-/* #next {
-  height: 50px;
-  display: inline-block;
-  position: absolute;
-  left: 33rem;
-  bottom: 11rem;
-}
-#previous {
-  height: 50px;
-  display: inline-block;
-  position: absolute;
-  right: 33rem;
-  bottom: 11rem;
-}
-img {
-  height: 50px;
-} */
 .new-flashcard {
   text-align: center;
 }
@@ -213,15 +197,16 @@ img {
 }
 
 #create {
-  background-color: #ff8a0d;
+  /* background-color: #d65531; */
   padding: 1rem;
-  color: #fff;
-  border-radius: 10%;
-  margin-bottom: 1rem;
+  /* color: #ffffff; */
+  border-radius: 5%;
+  margin: 2rem 0 1rem 0;
+  text-align: justify;
+  font-size: 1.5rem;
 }
 
 #exit {
-  background-color: #dde4ff;
   padding: 1rem;
   color: red;
   border-radius: 10%;
